@@ -76,7 +76,7 @@ export class Fighter {
             },
             [FighterState.CROUCH_UP]: {
                 init: () => {},
-                update: this.handleJumpState.bind(this),
+                update: this.handleCrouchUpState.bind(this),
                 validFrom: [
                     FighterState.CROUCH
                 ],
