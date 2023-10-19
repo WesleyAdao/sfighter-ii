@@ -1,20 +1,23 @@
-import { Ken } from "./../fighters/ken.js";
-import { Ryu } from "./../fighters/ryu.js";
-import { KenStage } from "./../stages/ken.js";
-import { FpsCounter } from "./../config/fpsCounter.js";
+import { Ken } from "../fighters/Ken.js";
+import { Ryu } from "../fighters/Ryu.js";
+import { KenStage } from "../stages/Ken.js";
+import { FpsCounter } from "../config/FpsCounter.js";
 import { STAGE_FLOOR } from "./../constants/stage.js";
 import { FighterDirection } from "./../constants/fighter.js";
+import { registerKeyboardEvents } from "../config/inputHandler.js";
+import { Shadow } from "./shadow.js";
 
 export class StreetFighterGame {
     constructor() {
         this.context = this.getContext();
         this.fighters = [
-            new Ryu(104, STAGE_FLOOR, FighterDirection.RIGHT),
-            new Ken(280, STAGE_FLOOR, FighterDirection.LEFT),
+            new Ryu(104, STAGE_FLOOR, FighterDirection.RIGHT, 0),
+            new Ken(280, STAGE_FLOOR, FighterDirection.LEFT, 1),
         ];
     
         this.entities = [
             new KenStage(),
+            ...this.fighters.map(fighter => new Shadow(fighter)),
             ...this.fighters,
             new FpsCounter(),
         ];
@@ -59,6 +62,7 @@ export class StreetFighterGame {
     }
 
     start() {
+        registerKeyboardEvents();
         window.requestAnimationFrame(this.frame.bind(this));
     }
 }
