@@ -47,6 +47,9 @@ export class Ryu extends Fighter {
             ['jump-roll-6', [[804, 258, 71, 87], [53, 98]]],
             ['jump-roll-7', [[883, 261, 54, 109], [31, 113]]],
             
+            // Jump first/last frame
+            ['jump-land', [[7, 268, 55, 85], [29, 83]]],
+            
             // Crouch
             ['crouch-1', [[551, 21, 53, 83], [27, 81]]],
             ['crouch-2', [[611, 36, 57, 69], [25, 66]]],
@@ -66,6 +69,9 @@ export class Ryu extends Fighter {
                 ['backwards-1', 65], ['backwards-2', 65], ['backwards-3', 65], 
                 ['backwards-4', 65], ['backwards-5', 65], ['backwards-6', 65]
             ],
+            [FighterState.JUMP_START]: [
+                ['jump-land', 50], ['jump-land', -2],
+            ],
             [FighterState.JUMP_UP]: [
                 ['jump-up-1', 180], ['jump-up-2', 100], ['jump-up-3', 100], 
                 ['jump-up-4', 100], ['jump-up-5', 100], ['jump-up-6', -1]
@@ -79,6 +85,9 @@ export class Ryu extends Fighter {
                 ['jump-roll-1', 200], ['jump-roll-6', 50], ['jump-roll-5', 50], 
                 ['jump-roll-4', 50], ['jump-roll-3', 50], ['jump-roll-2', 50],  
                 ['jump-roll-7', 0]
+            ],
+            [FighterState.JUMP_LAND]: [
+                ['jump-land', 33], ['jump-land', 117], ['jump-land', -2], 
             ],
             [FighterState.CROUCH]: [
                 ['crouch-3', 0]
