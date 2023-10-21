@@ -1,4 +1,4 @@
-import { FighterState } from '../constants/fighter.js';
+import { FighterState, FrameDelay } from '../constants/fighter.js';
 import { Fighter } from './Fighter.js';
 
 export class Ryu extends Fighter {
@@ -54,6 +54,16 @@ export class Ryu extends Fighter {
             ['crouch-1', [[551, 21, 53, 83], [27, 81]]],
             ['crouch-2', [[611, 36, 57, 69], [25, 66]]],
             ['crouch-3', [[679, 44, 61, 61], [25, 58]]],
+
+            // Stand Turn
+            ['idle-turn-1', [[348, 8, 54, 95], [29, 92]]],
+            ['idle-turn-2', [[414, 6, 58, 97], [30, 94]]],
+            ['idle-turn-3', [[486, 10, 54, 94], [27, 90]]],
+
+            // Crouch Turn
+            ['crouch-turn-1', [[751, 46, 53, 61], [26, 58]]],
+            ['crouch-turn-2', [[816, 46, 52, 61], [27, 58]]],
+            ['crouch-turn-3', [[878, 46, 53, 61], [29, 58]]],
         ]);
         
         this.animations = {
@@ -93,10 +103,18 @@ export class Ryu extends Fighter {
                 ['crouch-3', 0]
             ],
             [FighterState.CROUCH_DOWN]: [
-                ['crouch-1', 30], ['crouch-2',30], ['crouch-3', 30], ['crouch-3', -2]
+                ['crouch-1', 30], ['crouch-2', 30], ['crouch-3', 30], ['crouch-3', -2]
             ],
             [FighterState.CROUCH_UP]: [
-                ['crouch-3', 30], ['crouch-2',30], ['crouch-1', 30], ['crouch-1', -2]
+                ['crouch-3', 30], ['crouch-2', 30], ['crouch-1', 30], ['crouch-1', -2]
+            ],
+            [FighterState.IDLE_TURN]: [
+                ['idle-turn-3', 33], ['idle-turn-2', 33], 
+                ['idle-turn-1', 33], ['idle-turn-1', FrameDelay.TRANSITION],
+            ],
+            [FighterState.CROUCH_TURN]: [
+                ['crouch-turn-3', 33], ['crouch-turn-2',33], 
+                ['crouch-turn-1', 33], ['crouch-turn-1', FrameDelay.TRANSITION],
             ],
         };
 
