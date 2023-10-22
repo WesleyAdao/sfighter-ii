@@ -92,9 +92,9 @@ export class Ryu extends Fighter {
                 ['jump-roll-7', FrameDelay.FREEZE]
             ],
             [FighterState.JUMP_BACKWARD]: [
-                ['jump-roll-7', 200], ['jump-roll-6', 50], ['jump-roll-5', 50], 
+                ['jump-roll-1', 200], ['jump-roll-6', 50], ['jump-roll-5', 50], 
                 ['jump-roll-4', 50], ['jump-roll-3', 50],  ['jump-roll-2', 50], 
-                ['jump-roll-1', FrameDelay.FREEZE]
+                ['jump-roll-7', FrameDelay.FREEZE]
             ],
             [FighterState.JUMP_LAND]: [
                 ['jump-land', 33], ['jump-land', 117], ['jump-land',  FrameDelay.TRANSITION], 
