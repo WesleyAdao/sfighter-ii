@@ -1,11 +1,25 @@
+import { drawFrame } from "../utils/context.js";
+
 export class KenStage {
     constructor() {
         this.image = document.querySelector('img[alt="kenStage"]');
+
+        this.frames = new Map([
+            ['stage-background', [72, 208, 768, 176]],
+            ['stage-boat', [8, 16, 521, 180]],
+            ['stage-floor', [8, 392, 896, 72]],
+        ]);
     }
     
     update() {}
 
-    draw(context){
-        context.drawImage(this.image, 0, 0);
+    drawFrame(context, frameKey, x, y) {
+        drawFrame(context, this.image, this.frames.get(frameKey), x, y);
+    }
+    
+    draw(context, camera){
+        this.drawFrame(context, 'stage-background', Math.floor(16 - (camera.position.x / 2.157303)), - camera.position.y);
+        this.drawFrame(context, 'stage-boat', Math.floor(150 - (camera.position.x / 1.613445)), - camera.position.y);
+        this.drawFrame(context, 'stage-floor', Math.floor(192 - camera.position.x),176 - camera.position.y);
     }
 }
