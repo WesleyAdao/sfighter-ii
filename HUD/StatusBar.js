@@ -53,7 +53,7 @@ export class StatusBar {
 
             //Alpha
             ['score-@', [17, 113, 10, 10]],
-            ['score-A', [29, 113, 10, 10]],
+            ['score-A', [29, 113, 12, 10]],
             ['score-B', [41, 113, 10, 10]],
             ['score-C', [53, 113, 10, 10]],
             ['score-D', [65, 113, 10, 10]],
@@ -152,8 +152,8 @@ export class StatusBar {
         this.drawScoreLabel(context, 'P1', 4);
         this.drawScore(context, 1, 45);
         
-        this.drawScoreLabel(context, 'ANT', 133);
-        this.drawScore(context, 5000, 177);
+        this.drawScoreLabel(context, 'KHA', 133);
+        this.drawScore(context, 50000, 177);
 
         this.drawScoreLabel(context, 'P2', 269);
         this.drawScore(context, 1, 309);
