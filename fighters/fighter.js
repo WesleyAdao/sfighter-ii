@@ -2,7 +2,6 @@ import * as control from '../engine/inputHandler.js';
 import { FighterDirection, FighterState, FIGHTER_START_DISTANCE, FrameDelay, PUSH_FRICTION } from '../constants/fighter.js';
 import { STAGE_FLOOR, STAGE_MID_POINT, STAGE_PADDING } from '../constants/stage.js';
 import { rectsOverlap } from '../utils/collisions.js';
-import { Control } from '../config/control.js';
 
 export class Fighter {
     constructor(name, playerId) {
@@ -29,6 +28,7 @@ export class Fighter {
         this.boxes = {
             push: { x: 0, y: 0, width: 0, height: 0 },
             hurt: [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+            hit: { x: 0, y: 0, width: 0, height: 0 },
         };
 
         this.states = {
@@ -206,13 +206,15 @@ export class Fighter {
 
     getBoxes(frameKey) {
         const [,
-            [x = 0, y = 0, width = 0, height = 0] = [],
+            [pushX = 0, pushY = 0, pushWidth = 0, pushHeight = 0] = [],
             [head = [0, 0, 0, 0], body = [0, 0, 0, 0], feet = [0, 0, 0, 0]] = [],
+            [hitX = 0, hitY = 0, hitWidth = 0, hitHeight = 0] = [],
         ] = this.frames.get(frameKey);
 
         return {
-            push: { x, y, width, height },
+            push: { x: pushX, y: pushY, width: pushWidth, height: pushHeight },
             hurt: [head, body, feet],
+            hit: { x: hitX, y: hitY, width: hitWidth, height: hitHeight },
         };
     }
 
@@ -499,7 +501,6 @@ export class Fighter {
 
         const [x = 0, y= 0, width = 0, height = 0] = dimensions;
 
-        // Hurt Box
         context.beginPath();
         context.strokeStyle = baseColor + 'AA';
         context. fillStyle = baseColor + '44';
@@ -532,6 +533,9 @@ export class Fighter {
         for (const hurtBox of boxes.hurt) {
             this.drawDebugBox(context, camera, hurtBox, '#7777FF');
         }
+
+        // Hit Box
+        this.drawDebugBox(context, camera, Object.values(boxes.hit), '#FF0000');
 
         // Ponto de origem
         context.beginPath();

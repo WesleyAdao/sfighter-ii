@@ -161,6 +161,7 @@ export class Ken extends Fighter {
             ]],
             ['light-punch-2', [
                 [[72, 1152, 92, 91], [32, 88]], PushBox.IDLE, HurtBox.IDLE,
+                [11, -85, 50, 18]
             ]],
 
             // Medium Punch
@@ -172,11 +173,14 @@ export class Ken extends Fighter {
             ]],
             ['med-punch-3', [
                 [[736, 1148, 108, 94], [24, 92]], PushBox.IDLE, HurtBox.PUNCH,
+                [17, -85, 68, 14]
             ]],
 
             // Heavy Punch
             ['heavy-punch-1', [
-                [[736, 1148, 108, 94], [24, 92]], PushBox.IDLE, HurtBox.PUNCH]],
+                [[736, 1148, 108, 94], [24, 92]], PushBox.IDLE, HurtBox.PUNCH,
+                [17, -85, 68, 14]
+            ]],
 
             // Light Kick
             ['light-kick-1', [
@@ -186,12 +190,14 @@ export class Ken extends Fighter {
             ['light-kick-2', [
                 [[143, 1565, 114, 94], [68, 95]], PushBox.IDLE,
                 [[-65, -96, 30, 18], [-57, -79, 42, 38], [-32, -52, 44, 50]],
+                [-17, -98, 66, 28],
             ]],
 
             // Medium Kick
             ['med-kick-1', [
                 [[143, 1565, 114, 94], [68, 95]], PushBox.IDLE,
                 [[-65, -96, 30, 18], [-57, -79, 42, 38], [-32, -52, 44, 50]],
+                [-18, -98, 80, 28],
             ]],
 
             // Heavy Kick
@@ -202,10 +208,12 @@ export class Ken extends Fighter {
             ['heavy-kick-2', [
                 [[763, 1567, 95, 94], [44, 91]], PushBox.IDLE,
                 [[12, -90, 34, 34], [-25, -78, 42, 42], [-11, -50, 42, 50]],
+                [15, -99, 40, 32],
             ]],
             ['heavy-kick-3', [
                 [[870, 1567, 120, 94], [42, 91]], PushBox.IDLE,
                 [[13, -91, 62, 34], [-25, -78, 42, 42], [-11, -50, 42, 50]],
+                [21, -97, 62, 24],
             ]],
             ['heavy-kick-4', [
                 [[1005, 1584, 101, 77], [39, 74]], PushBox.IDLE,
