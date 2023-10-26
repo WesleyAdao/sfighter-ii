@@ -1,4 +1,4 @@
-import { FighterState, FrameDelay, PushBox } from '../constants/fighter.js';
+import { FighterState, FrameDelay, HurtBox, PushBox } from '../constants/fighter.js';
 import { Fighter } from './Fighter.js';
 
 export class Ken extends Fighter {
@@ -9,87 +9,212 @@ export class Ken extends Fighter {
 
         this.frames = new Map([
             // Idle Stance
-            ['idle-1', [[[346, 688, 68, 89], [34, 86]], PushBox.IDLE]],
-            ['idle-2', [[[2, 687, 59, 90], [33, 87]], PushBox.IDLE]],
-            ['idle-3', [[[72, 685, 58, 92], [32, 89]], PushBox.IDLE]],
-            ['idle-4', [[[142, 684, 55, 93], [31, 90]], PushBox.IDLE]],
+            ['idle-1', [
+                [[346, 688, 68, 89], [34, 86]], PushBox.IDLE, HurtBox.IDLE,
+            ]],
+            ['idle-2', [
+                [[2, 687, 59, 90], [33, 87]], PushBox.IDLE, HurtBox.IDLE,
+            ]],
+            ['idle-3', [
+                [[72, 685, 58, 92], [32, 89]], PushBox.IDLE, HurtBox.IDLE,
+            ]],
+            ['idle-4', [
+                [[142, 684, 55, 93], [31, 90]], PushBox.IDLE, HurtBox.IDLE,
+            ]],
             
-            // Move backwards
-            ['forwards-1', [[[8, 872, 53, 83], [27, 81]], PushBox.IDLE]],
-            ['forwards-2', [[[70, 867, 60, 88], [35, 86]], PushBox.IDLE]],
-            ['forwards-3', [[[140, 866, 64, 90], [35, 87]], PushBox.IDLE]],
-            ['forwards-4', [[[215, 865, 63, 89], [29, 88]], PushBox.IDLE]],
-            ['forwards-5', [[[288, 866, 54, 89], [25, 87]], PushBox.IDLE]],
-            ['forwards-6', [[[357, 867, 50, 89], [25, 86]], PushBox.IDLE]],
+            // Move Forwards
+            ['forwards-1', [
+                [[8, 872, 53, 83], [27, 81]], PushBox.IDLE, HurtBox.FORWARD,
+            ]],
+            ['forwards-2', [
+                [[70, 867, 60, 88], [35, 86]], PushBox.IDLE, HurtBox.FORWARD,
+            ]],
+            ['forwards-3', [
+                [[140, 866, 64, 90], [35, 87]], PushBox.IDLE, HurtBox.FORWARD,
+            ]],
+            ['forwards-4', [
+                [[215, 865, 63, 89], [29, 88]], PushBox.IDLE, HurtBox.FORWARD,
+            ]],
+            ['forwards-5', [
+                [[288, 866, 54, 89], [25, 87]], PushBox.IDLE, HurtBox.FORWARD,
+            ]],
+            ['forwards-6', [
+                [[357, 867, 50, 89], [25, 86]], PushBox.IDLE, HurtBox.FORWARD,
+            ]],
             
             // Move Backwards
-            ['backwards-1', [[[417, 868, 61, 87], [35, 85]], PushBox.IDLE]],
-            ['backwards-2', [[[487, 866, 59, 90], [36, 87]], PushBox.IDLE]],
-            ['backwards-3', [[[558, 865, 57, 90], [36, 88]], PushBox.IDLE]],
-            ['backwards-4', [[[629, 864, 58, 90], [38, 89]], PushBox.IDLE]],
-            ['backwards-5', [[[702, 865, 58, 91], [36, 88]], PushBox.IDLE]],
-            ['backwards-6', [[[773, 865, 57, 89], [36, 87]], PushBox.IDLE]],
+            ['backwards-1', [
+                [[417, 868, 61, 87], [35, 85]], PushBox.IDLE, HurtBox.BACKWARD,
+            ]],
+            ['backwards-2', [
+                [[487, 866, 59, 90], [36, 87]], PushBox.IDLE, HurtBox.BACKWARD,
+            ]],
+            ['backwards-3', [
+                [[558, 865, 57, 90], [36, 88]], PushBox.IDLE, HurtBox.BACKWARD,
+            ]],
+            ['backwards-4', [
+                [[629, 864, 58, 90], [38, 89]], PushBox.IDLE, HurtBox.BACKWARD,
+            ]],
+            ['backwards-5', [
+                [[702, 865, 58, 91], [36, 88]], PushBox.IDLE, HurtBox.BACKWARD,
+            ]],
+            ['backwards-6', [
+                [[773, 865, 57, 89], [36, 87]], PushBox.IDLE, HurtBox.BACKWARD,
+            ]],
 
             // Jump Up
-            ['jump-up-1', [[[724, 1036, 56, 104], [32, 107]], PushBox.JUMP]],
-            ['jump-up-2', [[[792, 995, 50, 89], [25, 103]], PushBox.JUMP]],
-            ['jump-up-3', [[[853, 967, 54, 77], [25, 103]], PushBox.JUMP]],
-            ['jump-up-4', [[[911, 966, 48, 70], [28, 101]], PushBox.JUMP]],
-            ['jump-up-5', [[[975, 977, 48, 86], [25, 103]], PushBox.JUMP]],
-            ['jump-up-6', [[[1031, 1008, 55, 103], [32, 107]], PushBox.JUMP]],
+            ['jump-up-1', [
+                [[724, 1036, 56, 104], [32, 107]], PushBox.JUMP, HurtBox.JUMP,
+            ]],
+            ['jump-up-2', [
+                [[792, 995, 50, 89], [25, 103]], PushBox.JUMP, HurtBox.JUMP,
+            ]],
+            ['jump-up-3', [
+                [[853, 967, 54, 77], [25, 103]], PushBox.JUMP, HurtBox.JUMP,
+            ]],
+            ['jump-up-4', [
+                [[911, 966, 48, 70], [28, 101]], PushBox.JUMP, HurtBox.JUMP,
+            ]],
+            ['jump-up-5', [
+                [[975, 977, 48, 86], [25, 103]], PushBox.JUMP, HurtBox.JUMP,
+            ]],
+            ['jump-up-6', [
+                [[1031, 1008, 55, 103], [32, 107]], PushBox.JUMP, HurtBox.JUMP,
+            ]],
 
             // Jump Forwards/Backwards
-            ['jump-roll-1', [[[1237, 1037, 55, 103], [25, 106]], PushBox.JUMP]],
-            ['jump-roll-2', [[[1301, 990, 61, 78], [22, 90]], PushBox.JUMP]],
-            ['jump-roll-3', [[[1363, 994, 104, 42], [61, 76]], PushBox.JUMP]],
-            ['jump-roll-4', [[[1468, 957, 53, 82], [42, 111]], PushBox.JUMP]],
-            ['jump-roll-5', [[[1541, 988, 122, 44], [71, 81]], PushBox.JUMP]],
-            ['jump-roll-6', [[[1664, 976, 71, 87], [53, 98]], PushBox.JUMP]],
-            ['jump-roll-7', [[[1748, 977, 55, 103], [32, 107]], PushBox.JUMP]],
+            ['jump-roll-1', [
+                [[1237, 1037, 55, 103], [25, 106]], PushBox.JUMP,
+                [[-11, -106, 24, 16], [-26, -90, 40, 42], [-26, -31, 40, 32]],
+            ]],
+            ['jump-roll-2', [
+                [[1301, 990, 61, 78], [22, 90]], PushBox.JUMP,
+                [[17, -90, 24, 16], [-14, -91, 40, 42], [-22, -66, 38, 18]],
+            ]],
+            ['jump-roll-3', [
+                [[1363, 994, 104, 42], [61, 76]], PushBox.JUMP,
+                [[22, -51, 24, 16], [-14, -81, 40, 42], [-22, -66, 38, 18]],
+            ]],
+            ['jump-roll-4', [
+                [[1468, 957, 53, 82], [42, 111]], PushBox.JUMP,
+                [[-39, -46, 24, 16], [-30, -88, 40, 42], [-34, -118, 44, 48]],
+            ]],
+            ['jump-roll-5', [
+                [[1541, 988, 122, 44], [71, 81]], PushBox.JUMP,
+                [[-72, -56, 24, 16], [-54, -77, 52, 40], [-14, -82, 48, 34]],
+            ]],
+            ['jump-roll-6', [
+                [[1664, 976, 71, 87], [53, 98]], PushBox.JUMP,
+                [[-55, -100, 24, 16], [-48, -87, 44, 38], [-22, -66, 38, 18]],
+            ]],
+            ['jump-roll-7', [
+                [[1748, 977, 55, 103], [32, 107]], PushBox.JUMP, HurtBox.JUMP,
+            ]],
             
             // Jump first/last frame
-            ['jump-land', [[[660, 1060, 55, 85], [29, 83]], PushBox.IDLE]],
+            ['jump-land', [
+                [[660, 1060, 55, 85], [29, 83]], PushBox.IDLE, HurtBox.IDLE,
+            ]],
             
             // Crouch
-            ['crouch-1', [[[8, 779, 53, 83], [27, 81]], PushBox.IDLE]],
-            ['crouch-2', [[[79, 794, 57, 78], [25, 66]], PushBox.BEND]],
-            ['crouch-3', [[[148, 802, 61, 61], [25, 58]], PushBox.CROUCH]],
+            ['crouch-1', [
+                [[8, 779, 53, 83], [27, 81]], PushBox.IDLE, HurtBox.IDLE,
+            ]],
+            ['crouch-2', [
+                [[79, 794, 57, 78], [25, 66]], PushBox.BEND, HurtBox.BEND,
+            ]],
+            ['crouch-3', [
+                [[148, 802, 61, 61], [25, 58]], PushBox.CROUCH, HurtBox.CROUCH,
+            ]],
 
-            // Stand Turn
-            ['idle-turn-1', [[[420, 682, 54, 95], [29, 92]], PushBox.IDLE]],
-            ['idle-turn-2', [[[488, 678, 58, 97], [30, 95]], PushBox.IDLE]],
-            ['idle-turn-3', [[[560, 683, 54, 94], [27, 90]], PushBox.IDLE]],
+            // Idle Turn
+            ['idle-turn-1', [
+                [[420, 682, 54, 95], [29, 92]], PushBox.IDLE,
+                [[-10, -89, 28, 18], [-14, -74, 40, 42], [-14, -31, 40, 32]],
+            ]],
+            ['idle-turn-2', [
+                [[488, 678, 58, 97], [30, 95]], PushBox.IDLE,
+                [[-16, -96, 28, 18], [-14, -74, 40, 42], [-14, -31, 40, 32]],
+                ]],
+            ['idle-turn-3', [
+                [[560, 683, 54, 94], [27, 90]], PushBox.IDLE,
+                [[-16, -96, 28, 18], [-14, -74, 40, 42], [-14, -31, 40, 32]],
+            ]],
 
             // Crouch Turn
-            ['crouch-turn-1', [[[356, 802, 53, 61], [26, 58]], PushBox.CROUCH]],
-            ['crouch-turn-2', [[[424, 802, 52, 61], [27, 58]], PushBox.CROUCH]],
-            ['crouch-turn-3', [[[486, 802, 53, 61], [29, 58]], PushBox.CROUCH]],
+            ['crouch-turn-1', [
+                [[356, 802, 53, 61], [26, 58]], PushBox.CROUCH,
+                [[-7, -60, 24, 18], [-28, -46, 44, 24], [-28, -24, 44, 24]],
+            ]],
+            ['crouch-turn-2', [
+                [[424, 802, 52, 61], [27, 58]], PushBox.CROUCH,
+                [[-7, -60, 24, 18], [-28, -46, 44, 24], [-28, -24, 44, 24]],
+            ]],
+            ['crouch-turn-3', [
+                [[486, 802, 53, 61], [29, 58]], PushBox.CROUCH,
+                [[-26, -61, 24, 18], [-28, -46, 44, 24], [-28, -24, 44, 24]],
+            ]],
 
             // Light Punch
-            ['light-punch-1', [[[3, 1152, 64, 91], [32, 88]], PushBox.IDLE]],
-            ['light-punch-2', [[[72, 1152, 92, 91], [32, 88]], PushBox.IDLE]],
+            ['light-punch-1', [
+                [[3, 1152, 64, 91], [32, 88]], PushBox.IDLE, HurtBox.IDLE,
+            ]],
+            ['light-punch-2', [
+                [[72, 1152, 92, 91], [32, 88]], PushBox.IDLE, HurtBox.IDLE,
+            ]],
 
             // Medium Punch
-            ['med-punch-1', [[[517, 1149, 60, 94], [28, 91]], PushBox.IDLE]],
-            ['med-punch-2', [[[650, 1148, 74, 95], [29, 92]], PushBox.IDLE]],
-            ['med-punch-3', [[[736, 1148, 108, 94], [24, 92]], PushBox.IDLE]],
+            ['med-punch-1', [
+                [[517, 1149, 60, 94], [28, 91]], PushBox.IDLE, HurtBox.IDLE,
+            ]],
+            ['med-punch-2', [
+                [[650, 1148, 74, 95], [29, 92]], PushBox.IDLE, HurtBox.PUNCH,
+            ]],
+            ['med-punch-3', [
+                [[736, 1148, 108, 94], [24, 92]], PushBox.IDLE, HurtBox.PUNCH,
+            ]],
 
             // Heavy Punch
-            ['heavy-punch-1', [[[736, 1148, 108, 94], [24, 92]], PushBox.IDLE]],
+            ['heavy-punch-1', [
+                [[736, 1148, 108, 94], [24, 92]], PushBox.IDLE, HurtBox.PUNCH]],
 
             // Light Kick
-            ['light-kick-1', [[[62, 1565, 66, 92], [46, 93]], PushBox.IDLE]],
-            ['light-kick-2', [[[143, 1565, 114, 94], [68, 95]], PushBox.IDLE]],
+            ['light-kick-1', [
+                [[62, 1565, 66, 92], [46, 93]], PushBox.IDLE,
+                [[-33, -96, 30, 18], [-41, -79, 42, 38], [-32, -52, 44, 50]],
+            ]],
+            ['light-kick-2', [
+                [[143, 1565, 114, 94], [68, 95]], PushBox.IDLE,
+                [[-65, -96, 30, 18], [-57, -79, 42, 38], [-32, -52, 44, 50]],
+            ]],
 
             // Medium Kick
-            ['med-kick-1', [[[143, 1565, 114, 94], [68, 95]], PushBox.IDLE]],
+            ['med-kick-1', [
+                [[143, 1565, 114, 94], [68, 95]], PushBox.IDLE,
+                [[-65, -96, 30, 18], [-57, -79, 42, 38], [-32, -52, 44, 50]],
+            ]],
 
             // Heavy Kick
-            ['heavy-kick-1', [[[683, 1571, 61, 90], [37, 87]], PushBox.IDLE]],
-            ['heavy-kick-2', [[[763, 1567, 95, 94], [44, 91]], PushBox.IDLE]],
-            ['heavy-kick-3', [[[870, 1567, 120, 94], [42, 91]], PushBox.IDLE]],
-            ['heavy-kick-4', [[[1005, 1584, 101, 77], [39, 74]], PushBox.IDLE]],
-            ['heavy-kick-5', [[[1147, 1580, 64, 81], [38, 78]], PushBox.IDLE]],
+            ['heavy-kick-1', [
+                [[683, 1571, 61, 90], [37, 87]], PushBox.IDLE,
+                [[-41, -78, 20, 20], [-25, -78, 42, 42], [-11, -50, 42, 50]],
+            ]],
+            ['heavy-kick-2', [
+                [[763, 1567, 95, 94], [44, 91]], PushBox.IDLE,
+                [[12, -90, 34, 34], [-25, -78, 42, 42], [-11, -50, 42, 50]],
+            ]],
+            ['heavy-kick-3', [
+                [[870, 1567, 120, 94], [42, 91]], PushBox.IDLE,
+                [[13, -91, 62, 34], [-25, -78, 42, 42], [-11, -50, 42, 50]],
+            ]],
+            ['heavy-kick-4', [
+                [[1005, 1584, 101, 77], [39, 74]], PushBox.IDLE,
+                [[-41, -78, 20, 20], [-25, -78, 42, 42], [-11, -50, 42, 50]],
+            ]],
+            ['heavy-kick-5', [
+                [[1147, 1580, 64, 81], [38, 78]], PushBox.IDLE,
+                [[-41, -78, 20, 20], [-25, -78, 42, 42], [-11, -50, 42, 50]],
+            ]],
         ]);
 
         this.animations = {
