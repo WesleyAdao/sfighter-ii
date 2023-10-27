@@ -18,15 +18,13 @@ export class BattleScene {
 
     constructor() {
         this.stage = new KenStage();
-
-        this.fighters = this.getFightersEntities();
-        this.camera = new Camera(STAGE_MID_POINT + STAGE_PADDING - 192, 16, this.fighters);
-        this.shadows = this.fighters.map(fighter => new Shadow(fighter));
-        
+       
         this.overlays = [
             new StatusBar(this.fighters),
             new FpsCounter(),
         ];
+
+        this.startRound();
     }
 
     getFighterEntityClass(id) {
@@ -81,6 +79,12 @@ export class BattleScene {
         gameState.fighters[opponentId].hitPoints -= FighterAttackBaseData[strength].damage;
 
         this.addEntity(this.getHitSplahClass(strength), position.x, position.y, playerId);
+    }
+
+    startRound() {
+        this.fighters = this.getFightersEntities();
+        this.camera = new Camera(STAGE_MID_POINT + STAGE_PADDING - 192, 16, this.fighters);
+        this.shadows = this.fighters.map(fighter => new Shadow(fighter));
     }
 
     updateFighters(time, context) {
