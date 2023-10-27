@@ -7,6 +7,7 @@ import {
     FrameDelay, 
     PUSH_FRICTION 
 } from '../constants/fighter.js';
+import { FRAME_TIME } from '../constants/game.js';
 import { STAGE_FLOOR, STAGE_MID_POINT, STAGE_PADDING } from '../constants/stage.js';
 import { boxOverlap, getActualBoxDimensions, rectsOverlap } from '../utils/collisions.js';
 
@@ -189,8 +190,7 @@ export class Fighter {
     isAnimationCompleted = () => this.animations[this.currentState][this.animationFrame][1] === FrameDelay.TRANSITION;
 
     resetVelocities() {
-        this.velocity.x = 0;
-        this.velocity.y = 0;
+        this.velocity = { x: 0, y: 0 };
     }
 
     hasCollidedWithOpponent = () => rectsOverlap(
@@ -233,7 +233,10 @@ export class Fighter {
 
     changeState(newState) {
         if (newState === this.currentState
-            || !this.states[newState].validFrom.includes(this.currentState)) return;
+            || !this.states[newState].validFrom.includes(this.currentState)) {
+            console.warn(`IIlegal transition from "${this.currentState}" to ""${newState}`);
+            return;
+        }
 
         this.currentState = newState;
         this.animationFrame = 0;
@@ -473,7 +476,7 @@ export class Fighter {
         const animation = this.animations[this.currentState];
         const [, frameDelay] = animation[this.animationFrame];
         
-        if (time.previous <= this.animationTimer + frameDelay) return;
+        if (time.previous <= this.animationTimer + frameDelay * FRAME_TIME) return;
         this.animationTimer = time.previous;
 
         if (frameDelay <= FrameDelay.FREEZE) return;
