@@ -10,10 +10,10 @@ import {
 import { FRAME_TIME } from '../constants/game.js';
 import { STAGE_FLOOR, STAGE_MID_POINT, STAGE_PADDING } from '../constants/stage.js';
 import { boxOverlap, getActualBoxDimensions, rectsOverlap } from '../utils/collisions.js';
+import { gameState } from '../states/gameState.js';
 
 export class Fighter {
-    constructor(name, playerId) {
-        this.name = name;
+    constructor(playerId) {
         this.playerId = playerId;
         this.position = {
             x: STAGE_MID_POINT + STAGE_PADDING + (playerId === 0 ? -FIGHTER_START_DISTANCE : FIGHTER_START_DISTANCE), 
@@ -545,7 +545,7 @@ export class Fighter {
             const hurtIndex = this.opponent.boxes.hurt.indexOf(hurt);
             const hurtName = ['head', 'body', 'feet'];
 
-            console.log(`${this.name} has hit ${this.opponent.name}'s ${hurtName[hurtIndex]}`);
+            console.log(`${gameState.fighters[this.playerId].id} has hit ${gameState.fighters[this.opponent.playerId].id}'s ${hurtName[hurtIndex]}`);
         }
     }
 

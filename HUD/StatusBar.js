@@ -1,16 +1,15 @@
 import { TIME_DELAY, TIME_FLASH_DELAY, TIME_FRAME_KEYS } from "../constants/battle.js";
+import { gameState } from "../states/gameState.js";
 import { drawFrame } from "../utils/context.js";
 
 export class StatusBar {
-    constructor(fighters) {
+    constructor() {
         this.image = document.querySelector('img[alt="hud"]');
 
         this.time = 99;
         this.timeTimer = 0;
         this.timeFlashTimer = 0;
         this.useFlashFrames = false;
-
-        this.fighters = fighters;
 
         this.frames = new Map([
             ['health-bar', [16, 18, 145, 11]],
@@ -85,8 +84,7 @@ export class StatusBar {
             ['tag-ryu', [16, 56, 28, 9]],
         ]);
 
-        const [{ name: name1 }, { name: name2 }] = this.fighters;
-        this.names = [`tag-${name1.toLowerCase()}`, `tag-${name2.toLowerCase()}`];
+        this.names = gameState.fighters.map(({id}) => `tag-${id.toLowerCase()}`);
     }
 
     drawFrame(context, frameKey, x, y, direction = 1) {
